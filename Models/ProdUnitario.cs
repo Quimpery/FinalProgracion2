@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Programacion2Final.Models
 {
+    [Serializable]
     internal class ProdUnitario:Items
     {
         string nombre;

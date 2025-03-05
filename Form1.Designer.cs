@@ -57,6 +57,7 @@
             this.btnExportar.TabIndex = 2;
             this.btnExportar.Text = "Exportar archivos";
             this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // btnImportar
             // 
@@ -66,6 +67,7 @@
             this.btnImportar.TabIndex = 3;
             this.btnImportar.Text = "Importar archivos";
             this.btnImportar.UseVisualStyleBackColor = true;
+            this.btnImportar.Click += new System.EventHandler(this.btnImportar_Click);
             // 
             // btnAgregarProducto
             // 
@@ -226,6 +228,8 @@
             this.Controls.Add(this.btnExportar);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

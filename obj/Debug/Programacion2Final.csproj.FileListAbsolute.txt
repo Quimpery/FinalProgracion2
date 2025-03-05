@@ -11,3 +11,13 @@ C:\Users\lauta\OneDrive\Escritorio\repos\Programacion2Final\Programacion2Final\o
 C:\Users\lauta\OneDrive\Escritorio\repos\Programacion2Final\Programacion2Final\obj\Debug\Programacion2Final.exe
 C:\Users\lauta\OneDrive\Escritorio\repos\Programacion2Final\Programacion2Final\obj\Debug\Programacion2Final.pdb
 C:\Users\lauta\OneDrive\Escritorio\repos\Programacion2Final\Programacion2Final\obj\Debug\Programacion2Final.FormMostrar.resources
+C:\Users\lauta\OneDrive\Escritorio\repos\Programacion2Final\FinalProgracion2\obj\Debug\Programacion2Final.csproj.AssemblyReference.cache
+C:\Users\lauta\OneDrive\Escritorio\repos\Programacion2Final\FinalProgracion2\obj\Debug\Programacion2Final.Form1.resources
+C:\Users\lauta\OneDrive\Escritorio\repos\Programacion2Final\FinalProgracion2\obj\Debug\Programacion2Final.FormMostrar.resources
+C:\Users\lauta\OneDrive\Escritorio\repos\Programacion2Final\FinalProgracion2\obj\Debug\Programacion2Final.Models.FormServicios.resources
+C:\Users\lauta\OneDrive\Escritorio\repos\Programacion2Final\FinalProgracion2\obj\Debug\Programacion2Final.Models.FormsProductos.resources
+C:\Users\lauta\OneDrive\Escritorio\repos\Programacion2Final\FinalProgracion2\obj\Debug\Programacion2Final.Properties.Resources.resources
+C:\Users\lauta\OneDrive\Escritorio\repos\Programacion2Final\FinalProgracion2\obj\Debug\Programacion2Final.csproj.GenerateResource.cache
+C:\Users\lauta\OneDrive\Escritorio\repos\Programacion2Final\FinalProgracion2\obj\Debug\Programacion2Final.csproj.CoreCompileInputs.cache
+C:\Users\lauta\OneDrive\Escritorio\repos\Programacion2Final\FinalProgracion2\obj\Debug\Programacion2Final.exe
+C:\Users\lauta\OneDrive\Escritorio\repos\Programacion2Final\FinalProgracion2\obj\Debug\Programacion2Final.pdb

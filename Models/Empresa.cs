@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Programacion2Final.Models
 {
+    [Serializable]
     internal class Empresa
     {
         string nombre;
@@ -55,6 +56,10 @@ namespace Programacion2Final.Models
             ListaFacturas.Push (factura);
             facturacionTotal += factura.PrecioTotal;
 
+        }
+        public Stack<Factura> VerFactura()
+        {
+            return ListaFacturas;
         }
         
     }

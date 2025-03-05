@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,11 +20,13 @@ namespace Programacion2Final
         Persona cliente;
         Factura Nueva;
 
+        FormsProductos vProductos = new FormsProductos();
+        FormServicios vServicios = new FormServicios();
+
         public Form1()
         {
             InitializeComponent();
-            FormsProductos vProductos = new FormsProductos();
-            FormServicios vServicios = new FormServicios();
+           
         }
 
 
@@ -108,6 +112,119 @@ namespace Programacion2Final
 
             vMostrar.Show();
 
+        }
+
+        private void btnImportar_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            FileStream fs = null;
+            StreamReader sr = null;
+            try
+            {
+                if (of.ShowDialog() == DialogResult.OK)
+                {
+                    fs = new FileStream(of.FileName, FileMode.Open, FileAccess.Read);
+                    sr = new StreamReader(fs);
+                    while (!sr.EndOfStream)
+                    {
+                        string linea = sr.ReadLine();
+                        string[] datos = linea.Split(';');
+
+                        int codigo = Convert.ToInt32(datos[0]);
+                        string nombre = datos[1];
+                        string unidadMedida = datos[2];
+                        double precio = Convert.ToDouble(datos[3]);
+
+                        ProdUnitario producto = new ProdUnitario(codigo, nombre, unidadMedida, precio);
+
+                        vProductos.cbProdcutos.Items.Add(producto);
+                    }
+
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if(fs != null) fs.Close();
+                if(sr != null) sr.Close();
+            }
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+            FileStream fs = null;
+            try
+            {
+                fs = new FileStream("sacor.bin", FileMode.OpenOrCreate, FileAccess.Read);
+                BinaryFormatter bf = new BinaryFormatter();
+                sacor=bf.Deserialize(fs) as Empresa;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (fs != null) fs.Close();
+            }
+            
+
+            
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sf = new SaveFileDialog();
+            FileStream fs = null;
+            StreamWriter sw = null;
+            try
+            {
+                if (sf.ShowDialog() == DialogResult.OK)
+                {
+                    fs = new FileStream(sf.FileName, FileMode.CreateNew, FileAccess.Write);
+                    sw = new StreamWriter(fs);
+                    Stack<Factura> factura = new Stack<Factura>();
+                    factura = sacor.VerFactura();
+                    foreach (Factura fac in factura)
+                    {
+                        sw.WriteLine($"{fac.VerNumero().ToString()};{fac.cliente.VerCuit().ToString()};{fac.FechaHora.Date};{fac.FechaHora.TimeOfDay};{fac.PrecioTotal}");
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message );
+            }
+            finally
+            {
+                if( fs != null) fs.Close();
+                 if(sw != null) sw.Close();
+            }
+            
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FileStream fs = null;
+
+            try
+            {
+                fs= new FileStream("sacor.bin",FileMode.OpenOrCreate, FileAccess.Write);
+                BinaryFormatter bf = new BinaryFormatter();
+                bf.Serialize(fs, sacor);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show (ex.Message );
+            }
+            finally
+            {
+                if( fs != null) fs.Close();
+            }
         }
     }
 }

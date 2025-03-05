@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Programacion2Final.Models
 {
+    [Serializable]
     internal abstract class Items
     {
         public int Codigo { get; set; }

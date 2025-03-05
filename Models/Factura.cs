@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Programacion2Final.Models
 {
+    [Serializable]
     internal class Factura
     {
-        Persona cliente;
-        DateTime FechaHora = DateTime.Now;
+        public Persona cliente;
+        public DateTime FechaHora = DateTime.Now;
         public double Iva;
         public double PrecioTotal;
         public int CantidadItems;
@@ -68,6 +69,11 @@ namespace Programacion2Final.Models
             nroFactura++;
             return factura;
 
+        }
+
+        public int VerNumero()
+        {
+            return nroFactura;
         }
     }
 }
